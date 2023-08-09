@@ -96,7 +96,7 @@ export const Provider = ({ children }) => {
   const deleteTransaction = async (id) => {
     try {
       const { data } = await axiosInstance.delete(`/transactions/${id}`);
-      console.log(data);
+      console.log("delete data", data);
       dispatch({ type: "DELETE_TRANSACTION", payload: id });
     } catch (error) {
       console.error(error.message);

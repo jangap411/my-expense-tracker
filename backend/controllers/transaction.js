@@ -34,7 +34,8 @@ const createTransaction = async (req, res) => {
 // @access  Auth users
 const deleteTransaction = async (req, res) => {
   try {
-    const transaction = await Transaction.findById(req.params.id);
+    const { id } = req.params;
+    const transaction = await Transaction.findById(id);
 
     if (!transaction) {
       return res.status(404).json({
@@ -47,7 +48,7 @@ const deleteTransaction = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: "Transaction Removed Successfully",
+      data: `Transaction ${id} Removed Successfully`,
     });
   } catch (err) {
     res.status(500).json({ data: err, error: true });
